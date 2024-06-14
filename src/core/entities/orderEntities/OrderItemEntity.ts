@@ -1,5 +1,4 @@
 import { OrderEntity } from "./OrderEntity";
-import { OrderStatusEntity } from "./OrderStatusEntity";
 
 export class OrderItemEntity {
     constructor(
@@ -9,4 +8,3 @@ export class OrderItemEntity {
         public amount: number
     ){}
 }
-  
