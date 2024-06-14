@@ -1,5 +1,8 @@
 export class AdminEntity {
-  constructor(
-    public id: number,
-  ){}
+
+  public id: number = 0;
+
+  constructor(rawData?: Partial<AdminEntity>) {
+    Object.assign(this, rawData);
+  }
 }

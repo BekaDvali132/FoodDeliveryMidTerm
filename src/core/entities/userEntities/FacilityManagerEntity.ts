@@ -1,8 +1,8 @@
-import { FacilityEntity } from '../facilityEntities/FacilityEntity';
-
 export class FacilityManagerEntity {
-  constructor(
-    public id: number,
-    public facilities: FacilityEntity[]
-  ){}
+
+  public id: number = 0;
+
+  constructor(rawData?: Partial<FacilityManagerEntity>) {
+    Object.assign(this, rawData);
+  }
 }

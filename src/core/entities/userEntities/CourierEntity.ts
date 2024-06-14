@@ -1,8 +1,8 @@
-import { OrderEntity } from '../orderEntities/OrderEntity';
-
 export class CourierEntity {
-  constructor(
-    public id: number,
-    public orders: OrderEntity[]
-  ){}
+
+  public id: number = 0;
+
+  constructor(rawData?: Partial<CourierEntity>) {
+    Object.assign(this, rawData);
+  }
 }
