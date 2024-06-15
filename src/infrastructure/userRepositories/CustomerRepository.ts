@@ -1,6 +1,6 @@
-import {ICustomerRepository} from "../interfaces";
-import { DataSource } from "./Database";
-import {CustomerEntity} from "../core/entities/userEntities/CustomerEntity";
+import {ICustomerRepository} from "../../interfaces";
+import { DataSource } from "../Database";
+import {CustomerEntity} from "../../core/entities/userEntities/CustomerEntity";
 
 export class CustomerRepository implements ICustomerRepository {
 
