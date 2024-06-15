@@ -1,6 +1,8 @@
 export class Tag {
-  constructor(
-    public id: number, 
-    public name: string
-  ) {}
+  public id?: number;
+  public name?: string;
+
+  constructor(rawData?: Partial<Tag>) {
+    Object.assign(this, rawData)
+  }
 }
