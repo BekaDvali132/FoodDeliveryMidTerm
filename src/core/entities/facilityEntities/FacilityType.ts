@@ -1,6 +1,8 @@
 export class FacilityType {
-  constructor(
-    public id: number,
-    public name: string
-  ) {}
+  public id: number = 0;
+  public name: string = '';
+
+  constructor(rawData?: Partial<FacilityType>) {
+    Object.assign(this, rawData);
+  }
 }
