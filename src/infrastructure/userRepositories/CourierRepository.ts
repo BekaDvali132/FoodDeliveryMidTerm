@@ -8,8 +8,21 @@ export class CourierRepository implements ICourierRepository {
     private readonly dataSource: DataSource,
   ) { }
 
-  save(user: CourierEntity): Promise<CourierEntity> {
-    return this.dataSource.couriers.save(user);
+  async save(userId: number, user: CourierEntity): Promise<CourierEntity> {
+    const coreUser = await this.dataSource.users.getById(userId);
+
+    if (!coreUser) {
+      throw new Error('User not found');
+    }
+
+    const courier = await this.dataSource.couriers.save(user);
+
+    await this.dataSource.users.update({
+      ...coreUser,
+      courier
+    });
+
+    return courier;
   }
 
   fetchById(id: number): Promise<CourierEntity | undefined> {

@@ -8,24 +8,25 @@ export interface IUserRepository {
   save(user: UserEntity): Promise<UserEntity>;
   fetchById(id: number): Promise<UserEntity | undefined>;
   fetchByEmail(email: string): Promise<UserEntity | undefined>;
+  update(user: UserEntity): Promise<UserEntity>;
 }
 
 export interface ICustomerRepository {
-  save(user: CustomerEntity): Promise<CustomerEntity>;
+  save(userId: number, user: CustomerEntity): Promise<CustomerEntity>;
   fetchById(id: number): Promise<CustomerEntity | undefined>;
 }
 
 export interface IAdminRepository {
-  save(user: AdminEntity): Promise<AdminEntity>;
+  save(userId: number, user: AdminEntity): Promise<AdminEntity>;
   fetchById(id: number): Promise<AdminEntity | undefined>;
 }
 
 export interface ICourierRepository {
-  save(user: CourierEntity): Promise<CourierEntity>;
+  save(userId: number, user: CourierEntity): Promise<CourierEntity>;
   fetchById(id: number): Promise<CourierEntity | undefined>;
 }
 
 export interface IFacilityManagerRepository {
-  save(user: FacilityManagerEntity): Promise<FacilityManagerEntity>;
+  save(userId: number, user: FacilityManagerEntity): Promise<FacilityManagerEntity>;
   fetchById(id: number): Promise<FacilityManagerEntity | undefined>;
 }

@@ -8,8 +8,21 @@ export class FacilityManagerRepository implements IFacilityManagerRepository {
     private readonly dataSource: DataSource,
   ) { }
 
-  save(user: FacilityManagerEntity): Promise<FacilityManagerEntity> {
-    return this.dataSource.facilityManagers.save(user);
+  async save(userId: number, user: FacilityManagerEntity): Promise<FacilityManagerEntity> {
+    const coreUser = await this.dataSource.users.getById(userId);
+
+    if (!coreUser) {
+      throw new Error('User not found');
+    }
+
+    const facilityManager = await this.dataSource.facilityManagers.save(user);
+
+    await this.dataSource.users.update({
+      ...coreUser,
+      manager: facilityManager
+    });
+
+    return facilityManager;
   }
 
   fetchById(id: number): Promise<FacilityManagerEntity | undefined> {

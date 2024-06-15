@@ -8,8 +8,21 @@ export class CustomerRepository implements ICustomerRepository {
     private readonly dataSource: DataSource,
   ) { }
 
-  save(user: CustomerEntity): Promise<CustomerEntity> {
-    return this.dataSource.customers.save(user);
+  async save(userId: number, user: CustomerEntity): Promise<CustomerEntity> {
+    const coreUser = await this.dataSource.users.getById(userId);
+
+    if (!coreUser) {
+      throw new Error('User not found');
+    }
+
+    const customer = await this.dataSource.customers.save(user);
+
+    await this.dataSource.users.update({
+      ...coreUser,
+      customer
+    })
+
+    return customer;
   }
 
   fetchById(id: number): Promise<CustomerEntity | undefined> {

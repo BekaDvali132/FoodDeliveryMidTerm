@@ -19,4 +19,8 @@ export class UserRepository implements IUserRepository {
   fetchByEmail(email: string): Promise<UserEntity | undefined> {
     return this.dataSource.users.findOne((user) => user.email === email);
   }
+
+  update(user: UserEntity): Promise<UserEntity> {
+    return this.dataSource.users.update(user);
+  }
 }
