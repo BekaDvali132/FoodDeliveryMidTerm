@@ -1,7 +1,8 @@
 export class OrderStatusEntity {
-    constructor (
-        public id: number,
-        public name: string
-    ) {}
+  public id: number = 0;
+  public name: string = "";
+
+  constructor(rawData?: Partial<OrderStatusEntity>) {
+    Object.assign(this, rawData);
+  }
 }
-  
