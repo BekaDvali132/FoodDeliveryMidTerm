@@ -1,4 +1,5 @@
 import { UserEntity } from "../core/entities/userEntities/UserEntity";
+import {CustomerEntity} from "../core/entities/userEntities/CustomerEntity";
 
 export class Collection<T> {
 
@@ -55,6 +56,7 @@ export class Collection<T> {
 
 export class DataSource {
   public readonly users = new Collection<UserEntity>;
+  public readonly customers = new Collection<CustomerEntity>;
 
   private static _instance: DataSource;
 
