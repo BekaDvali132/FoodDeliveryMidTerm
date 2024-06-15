@@ -1,6 +1,7 @@
 import { UserEntity } from "../core/entities/userEntities/UserEntity";
 import {CustomerEntity} from "../core/entities/userEntities/CustomerEntity";
 import {AdminEntity} from "../core/entities/userEntities/AdminEntity";
+import {CourierEntity} from "../core/entities/userEntities/CourierEntity";
 
 export class Collection<T> {
 
@@ -59,6 +60,7 @@ export class DataSource {
   public readonly users = new Collection<UserEntity>;
   public readonly customers = new Collection<CustomerEntity>;
   public readonly admins = new Collection<AdminEntity>;
+  public readonly couriers = new Collection<CourierEntity>;
 
   private static _instance: DataSource;
 
