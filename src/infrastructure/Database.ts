@@ -28,6 +28,24 @@ export class Collection<T> {
     return Promise.resolve(item);
   }
 
+  update(item: T): Promise<T> {
+    const id = (item as any).id;
+
+    if (!id) {
+      throw new Error('Cannot update item without id');
+    }
+
+    const index = this.items.findIndex((item: any) => item.id === id);
+
+    if (index >= 0) {
+      this.items[index] = item;
+    } else {
+      throw new Error('Item not found');
+    }
+
+    return Promise.resolve(item);
+  }
+
   getById(id: number): Promise<T | undefined> {
     return Promise.resolve(
       this.items.find((item: any) => item.id === id)
