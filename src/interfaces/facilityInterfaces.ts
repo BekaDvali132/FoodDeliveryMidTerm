@@ -17,7 +17,6 @@ export interface IFacilityTypeRepository {
 export interface IProductRepository {
   save(product: ProductEntity): Promise<ProductEntity>;
   fetchById(id: number): Promise<ProductEntity | undefined>;
-  update(product: ProductEntity): Promise<ProductEntity>;
 }
 
 export interface ITagRepository {
