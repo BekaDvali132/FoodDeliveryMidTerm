@@ -1,5 +1,5 @@
 import { UserEntity } from "../../core/entities/userEntities/UserEntity";
-import { IUserRepository } from "../../interfaces";
+import { IUserRepository } from "../../interfaces/userInterfaces";
 import { DataSource } from "../Database";
 
 export class UserRepository implements IUserRepository {

@@ -1,4 +1,4 @@
-import {IAdminRepository} from "../../interfaces";
+import {IAdminRepository} from "../../interfaces/userInterfaces";
 import {DataSource} from "../Database";
 import {AdminEntity} from "../../core/entities/userEntities/AdminEntity";
 
