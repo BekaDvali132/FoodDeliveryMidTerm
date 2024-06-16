@@ -4,6 +4,7 @@ import {AdminEntity} from "../core/entities/userEntities/AdminEntity";
 import {CourierEntity} from "../core/entities/userEntities/CourierEntity";
 import {FacilityManagerEntity} from "../core/entities/userEntities/FacilityManagerEntity";
 
+
 export interface IUserRepository {
   save(user: UserEntity): Promise<UserEntity>;
   fetchById(id: number): Promise<UserEntity | undefined>;
