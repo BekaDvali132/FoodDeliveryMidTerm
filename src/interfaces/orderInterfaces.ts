@@ -5,6 +5,7 @@ import {OrderItemEntity} from "../core/entities/orderEntities/OrderItemEntity";
 export interface IOrderRepository {
   save(status: OrderEntity): Promise<OrderEntity>;
   fetchById(id: number): Promise<OrderEntity | undefined>;
+  update(orderItem: OrderEntity): Promise<OrderEntity>;
 }
 
 export interface IOrderStatusRepository {

@@ -15,4 +15,14 @@ export class OrderRepository implements IOrderRepository {
   fetchById(id: number): Promise<OrderEntity | undefined> {
     return this.dataSource.orders.getById(id);
   }
+
+  async update(order: OrderEntity): Promise<OrderEntity> {
+    const orderExists = await this.dataSource.orders.getById(order.id);
+
+    if (!orderExists) {
+      throw new Error('Order does not exist');
+    }
+
+    return this.dataSource.orders.update(order);
+  }
 }
