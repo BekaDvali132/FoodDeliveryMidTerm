@@ -6,6 +6,7 @@ import {Tag} from "../core/entities/facilityEntities/Tag";
 export interface IFacilityRepository {
   save(facility: FacilityEntity): Promise<FacilityEntity>;
   fetchById(id: number): Promise<FacilityEntity | undefined>;
+  fetchAll(): Promise<FacilityEntity[]>;
 }
 
 export interface IFacilityTypeRepository {
