@@ -1,6 +1,6 @@
 import { CustomerEntity } from "../core/entities/userEntities/CustomerEntity";
 import { UserEntity } from "../core/entities/userEntities/UserEntity";
-import { IUserRepository } from "../interfaces";
+import { IUserRepository } from "../interfaces/userInterfaces";
 
 export class CustomerService {
 

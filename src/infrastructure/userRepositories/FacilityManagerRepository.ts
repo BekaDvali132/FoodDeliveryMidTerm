@@ -1,4 +1,4 @@
-import {IFacilityManagerRepository} from "../../interfaces";
+import {IFacilityManagerRepository} from "../../interfaces/userInterfaces";
 import { DataSource } from "../Database";
 import {FacilityManagerEntity} from "../../core/entities/userEntities/FacilityManagerEntity";
 

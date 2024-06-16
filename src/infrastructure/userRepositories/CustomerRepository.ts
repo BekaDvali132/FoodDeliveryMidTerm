@@ -1,4 +1,4 @@
-import {ICustomerRepository} from "../../interfaces";
+import {ICustomerRepository} from "../../interfaces/userInterfaces";
 import { DataSource } from "../Database";
 import {CustomerEntity} from "../../core/entities/userEntities/CustomerEntity";
 

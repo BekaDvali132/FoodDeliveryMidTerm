@@ -1,4 +1,4 @@
-import {ICourierRepository} from "../../interfaces";
+import {ICourierRepository} from "../../interfaces/userInterfaces";
 import { DataSource } from "../Database";
 import {CourierEntity} from "../../core/entities/userEntities/CourierEntity";
 
