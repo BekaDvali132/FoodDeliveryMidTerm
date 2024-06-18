@@ -1,8 +1,4 @@
 import { UserEntity } from "../core/entities/userEntities/UserEntity";
-import {CustomerEntity} from "../core/entities/userEntities/CustomerEntity";
-import {AdminEntity} from "../core/entities/userEntities/AdminEntity";
-import {CourierEntity} from "../core/entities/userEntities/CourierEntity";
-import {FacilityManagerEntity} from "../core/entities/userEntities/FacilityManagerEntity";
 import {OrderEntity} from "../core/entities/orderEntities/OrderEntity";
 import {OrderItemEntity} from "../core/entities/orderEntities/OrderItemEntity";
 import {FacilityEntity} from "../core/entities/facilityEntities/FacilityEntity";
@@ -83,10 +79,6 @@ export class Collection<T> {
 
 export class DataSource {
   public readonly users = new Collection<UserEntity>;
-  public readonly customers = new Collection<CustomerEntity>;
-  public readonly admins = new Collection<AdminEntity>;
-  public readonly couriers = new Collection<CourierEntity>;
-  public readonly facilityManagers = new Collection<FacilityManagerEntity>;
   public readonly orders = new Collection<OrderEntity>;
   public readonly orderItems = new Collection<OrderItemEntity>;
   public readonly facilities = new Collection<FacilityEntity>;
