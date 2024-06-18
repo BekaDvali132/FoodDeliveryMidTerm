@@ -3,7 +3,6 @@ import {CustomerEntity} from "../core/entities/userEntities/CustomerEntity";
 import {AdminEntity} from "../core/entities/userEntities/AdminEntity";
 import {CourierEntity} from "../core/entities/userEntities/CourierEntity";
 import {FacilityManagerEntity} from "../core/entities/userEntities/FacilityManagerEntity";
-import {OrderStatusEntity} from "../core/entities/orderEntities/OrderStatusEntity";
 import {OrderEntity} from "../core/entities/orderEntities/OrderEntity";
 import {OrderItemEntity} from "../core/entities/orderEntities/OrderItemEntity";
 import {FacilityEntity} from "../core/entities/facilityEntities/FacilityEntity";
@@ -90,7 +89,6 @@ export class DataSource {
   public readonly facilityManagers = new Collection<FacilityManagerEntity>;
   public readonly orders = new Collection<OrderEntity>;
   public readonly orderItems = new Collection<OrderItemEntity>;
-  public readonly orderStatuses = new Collection<OrderStatusEntity>;
   public readonly facilities = new Collection<FacilityEntity>;
   public readonly facilityTypes = new Collection<FacilityType>;
   public readonly tags = new Collection<Tag>;

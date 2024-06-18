@@ -1,17 +1,10 @@
-import {OrderStatusEntity} from "./OrderStatusEntity";
-
 export class OrderEntity {
   public id: number = 0;
   public paymentAmount: number = 0;
 
-  public status?: OrderStatusEntity;
+  public status: 'pending' | 'delivering' | 'preparing' | 'completed' | 'cancelled' = 'pending'
 
   constructor(rawData?: Partial<OrderEntity>) {
-    if (rawData?.status) {
-      this.status = new OrderStatusEntity(rawData.status);
-      delete rawData.status;
-    }
-
     Object.assign(this, rawData);
   }
 }
