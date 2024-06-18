@@ -1,3 +1,5 @@
+import {UserEntity} from "../userEntities/UserEntity";
+
 export enum orderStatusEnum {
   pending = 'pending',
   delivering = 'delivering',
@@ -12,7 +14,15 @@ export class OrderEntity {
 
   public status: orderStatusEnum = orderStatusEnum.pending
 
+  public customer?: UserEntity;
+
   constructor(rawData?: Partial<OrderEntity>) {
+
+    if (rawData?.customer) {
+      this.customer = new UserEntity(rawData.customer);
+      delete rawData.customer;
+    }
+
     Object.assign(this, rawData);
   }
 }

@@ -19,4 +19,8 @@ export class OrderRepository implements IOrderRepository {
   async update(order: OrderEntity): Promise<OrderEntity> {
     return this.dataSource.orders.update(order);
   }
+
+  async fetchByCustomer(id: number): Promise<OrderEntity[]> {
+    return this.dataSource.orders.find((order) => Boolean(order?.customer?.id && order.customer.id === id));
+  }
 }
