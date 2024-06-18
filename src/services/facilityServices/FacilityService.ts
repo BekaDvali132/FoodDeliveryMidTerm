@@ -1,16 +1,15 @@
-import {FacilityRepository} from "../../infrastructure/facilityRepositories/FacilityRepository";
 import {FacilityEntity} from "../../core/entities/facilityEntities/FacilityEntity";
 import {FacilityManagerEntity} from "../../core/entities/userEntities/FacilityManagerEntity";
-import {FacilityManagerRepository} from "../../infrastructure/userRepositories/FacilityManagerRepository";
-import {FacilityTypeRepository} from "../../infrastructure/facilityRepositories/FacilityTypeRepository";
 import {FacilityType} from "../../core/entities/facilityEntities/FacilityType";
+import {IFacilityManagerRepository} from "../../interfaces/userInterfaces";
+import {IFacilityRepository, IFacilityTypeRepository} from "../../interfaces/facilityInterfaces";
 
 export class FacilityService {
 
   constructor(
-    private readonly facilityManagerRepository: FacilityManagerRepository,
-    private readonly facilityRepository: FacilityRepository,
-    private readonly facilityTypeRepository: FacilityTypeRepository,
+    private readonly facilityManagerRepository: IFacilityManagerRepository,
+    private readonly facilityRepository: IFacilityRepository,
+    private readonly facilityTypeRepository: IFacilityTypeRepository,
   ) {}
 
   async getFacilities(): Promise<FacilityEntity[]> {

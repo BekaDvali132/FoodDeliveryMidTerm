@@ -1,5 +1,5 @@
-import { UserEntity } from "../core/entities/userEntities/UserEntity";
-import { IUserRepository } from "../interfaces/userInterfaces";
+import { UserEntity } from "../../core/entities/userEntities/UserEntity";
+import { IUserRepository } from "../../interfaces/userInterfaces";
 
 export class LoginFailedException extends Error {
   constructor() {

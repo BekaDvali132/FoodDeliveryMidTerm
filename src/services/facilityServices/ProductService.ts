@@ -1,15 +1,13 @@
-import {ProductRepository} from "../../infrastructure/facilityRepositories/ProductRepository";
 import {ProductEntity} from "../../core/entities/facilityEntities/ProductEntity";
-import {TagRepository} from "../../infrastructure/facilityRepositories/TagRepository";
-import {FacilityRepository} from "../../infrastructure/facilityRepositories/FacilityRepository";
 import {Tag} from "../../core/entities/facilityEntities/Tag";
+import {IFacilityRepository, IProductRepository, ITagRepository} from "../../interfaces/facilityInterfaces";
 
 export class ProductService {
 
   constructor(
-    private readonly productRepository: ProductRepository,
-    private readonly tagRepository: TagRepository,
-    private readonly facilityRepository: FacilityRepository,
+    private readonly productRepository: IProductRepository,
+    private readonly tagRepository: ITagRepository,
+    private readonly facilityRepository: IFacilityRepository,
   ) {}
 
   async addProduct(name: string, price:number, ownerId: number, tagIds: number[]): Promise<ProductEntity> {
