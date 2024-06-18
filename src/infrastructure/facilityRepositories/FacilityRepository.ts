@@ -31,4 +31,8 @@ export class FacilityRepository implements IFacilityRepository {
   fetchById(id: number): Promise<FacilityEntity | undefined> {
     return this.dataSource.facilities.getById(id);
   }
+
+  fetchAll(): Promise<FacilityEntity[]> {
+    return this.dataSource.facilities.find();
+  }
 }

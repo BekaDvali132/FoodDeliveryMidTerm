@@ -58,9 +58,9 @@ export class Collection<T> {
     );
   }
 
-  find(predicate: (item: T) => boolean): Promise<T[]> {
+  find(predicate?: (item: T) => boolean): Promise<T[]> {
     return Promise.resolve(
-      this.items.filter(predicate)
+      this.items.filter(predicate ? predicate : () => true)
     );
   }
 
