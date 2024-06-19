@@ -3,6 +3,7 @@ import {UserEntity} from "../../core/entities/userEntities/UserEntity";
 import {OrderItemEntity} from "../../core/entities/orderEntities/OrderItemEntity";
 import {OrderEntity, orderStatusEnum} from "../../core/entities/orderEntities/OrderEntity";
 import {ProductEntity} from "../../core/entities/facilityEntities/ProductEntity";
+import { FacilityEntity } from "../../core/entities/facilityEntities/FacilityEntity";
 
 export class OrderService {
 
@@ -13,17 +14,20 @@ export class OrderService {
 
     async placeOrder({
         customer,
-        products
+        products,
+        facility
     }: {
         customer: UserEntity,
-        products: ProductEntity[]
+        products: ProductEntity[],
+        facility: FacilityEntity
     }): Promise<OrderEntity> {
         const paymentAmount = products.reduce((acc, item) => acc + (item?.price || 0), 0)
 
         let newOrder = new OrderEntity({
             customer,
             paymentAmount,
-            status: orderStatusEnum.pending
+            status: orderStatusEnum.pending,
+            facility
         });
 
         newOrder = await this.orderRepository.save(newOrder)
@@ -54,6 +58,10 @@ export class OrderService {
         await Promise.all(savedOrderItems)
 
         return newOrder;
+    }
+
+    async getOrdersByFacility(facility: FacilityEntity): Promise<OrderEntity[]> {
+        return this.orderRepository.fetchByFacility(facility.id)
     }
 
 }

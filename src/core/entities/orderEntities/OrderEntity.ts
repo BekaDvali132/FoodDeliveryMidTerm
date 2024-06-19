@@ -1,3 +1,4 @@
+import { FacilityEntity } from "../facilityEntities/FacilityEntity";
 import {UserEntity} from "../userEntities/UserEntity";
 
 export enum orderStatusEnum {
@@ -16,6 +17,7 @@ export class OrderEntity {
 
   public customer?: UserEntity;
   public courier?: UserEntity;
+  public facility?: FacilityEntity;
 
   constructor(rawData?: Partial<OrderEntity>) {
 
@@ -27,6 +29,11 @@ export class OrderEntity {
     if (rawData?.courier) {
       this.courier = new UserEntity(rawData.courier);
       delete rawData.courier;
+    }
+
+    if (rawData?.facility) {
+      this.facility = new FacilityEntity(rawData.facility);
+      delete rawData.facility;
     }
 
     Object.assign(this, rawData);

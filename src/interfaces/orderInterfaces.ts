@@ -6,6 +6,7 @@ export interface IOrderRepository {
   fetchById(id: number): Promise<OrderEntity | undefined>;
   update(orderItem: OrderEntity): Promise<OrderEntity>;
   fetchByCustomer(id: number): Promise<OrderEntity[]>;
+  fetchByFacility(id: number): Promise<OrderEntity[]>;
 }
 
 export interface IOrderItemRepository {
