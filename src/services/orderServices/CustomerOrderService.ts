@@ -5,8 +5,7 @@ import {OrderEntity, orderStatusEnum} from "../../core/entities/orderEntities/Or
 import {ProductEntity} from "../../core/entities/facilityEntities/ProductEntity";
 import { FacilityEntity } from "../../core/entities/facilityEntities/FacilityEntity";
 
-export class OrderService {
-
+export class CustomerOrderService {
     constructor(
         private readonly orderRepository: IOrderRepository,
         private readonly orderItemRepository: IOrderItemRepository,
@@ -58,10 +57,6 @@ export class OrderService {
         await Promise.all(savedOrderItems)
 
         return newOrder;
-    }
-
-    async getOrdersByFacility(facility: FacilityEntity): Promise<OrderEntity[]> {
-        return this.orderRepository.fetchByFacility(facility.id)
     }
 
 }
