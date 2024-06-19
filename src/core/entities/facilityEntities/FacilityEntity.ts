@@ -1,12 +1,12 @@
 import { FacilityType } from './FacilityType';
-import { FacilityManagerEntity } from '../userEntities/FacilityManagerEntity';
+import {UserEntity} from "../userEntities/UserEntity";
 
 export class FacilityEntity {
   public id: number = 0;
   public name: string = '';
 
   public type?: FacilityType;
-  public manager?: FacilityManagerEntity;
+  public manager?: UserEntity;
 
   constructor(rawData?: Partial<FacilityEntity>) {
     if (rawData?.type) {
@@ -15,7 +15,7 @@ export class FacilityEntity {
     }
 
     if (rawData?.manager) {
-      this.manager = new FacilityManagerEntity(rawData.manager);
+      this.manager = new UserEntity(rawData.manager);
       delete rawData.manager;
     }
 

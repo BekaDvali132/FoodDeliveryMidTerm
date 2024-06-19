@@ -1,13 +1,13 @@
 import {FacilityEntity} from "../../core/entities/facilityEntities/FacilityEntity";
-import {FacilityManagerEntity} from "../../core/entities/userEntities/FacilityManagerEntity";
 import {FacilityType} from "../../core/entities/facilityEntities/FacilityType";
-import {IFacilityManagerRepository} from "../../interfaces/userInterfaces";
+import {IUserRepository} from "../../interfaces/userInterfaces";
 import {IFacilityRepository, IFacilityTypeRepository} from "../../interfaces/facilityInterfaces";
+import {UserEntity} from "../../core/entities/userEntities/UserEntity";
 
 export class FacilityService {
 
   constructor(
-    private readonly facilityManagerRepository: IFacilityManagerRepository,
+    private readonly userRepository: IUserRepository,
     private readonly facilityRepository: IFacilityRepository,
     private readonly facilityTypeRepository: IFacilityTypeRepository,
   ) {}
@@ -17,7 +17,7 @@ export class FacilityService {
   }
 
   async addFacility(name: string, ownerId: number, typeId: number): Promise<FacilityEntity> {
-    const manager = await this.facilityManagerRepository.fetchById(ownerId) as FacilityManagerEntity;
+    const manager = await this.userRepository.fetchById(ownerId) as UserEntity;
 
     if (!manager) {
       throw new Error("Owner not found");

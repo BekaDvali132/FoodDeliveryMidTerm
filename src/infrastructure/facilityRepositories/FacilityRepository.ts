@@ -17,7 +17,7 @@ export class FacilityRepository implements IFacilityRepository {
       throw new Error("Facility type does not exist");
     }
 
-    const managerExists = await this.dataSource.facilityManagers.findOne(
+    const managerExists = await this.dataSource.users.findOne(
       (manager) => manager.id === facility.manager?.id
     )
 
