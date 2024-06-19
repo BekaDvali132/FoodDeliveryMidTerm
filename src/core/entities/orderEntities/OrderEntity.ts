@@ -15,12 +15,18 @@ export class OrderEntity {
   public status: orderStatusEnum = orderStatusEnum.pending
 
   public customer?: UserEntity;
+  public courier?: UserEntity;
 
   constructor(rawData?: Partial<OrderEntity>) {
 
     if (rawData?.customer) {
       this.customer = new UserEntity(rawData.customer);
       delete rawData.customer;
+    }
+
+    if (rawData?.courier) {
+      this.courier = new UserEntity(rawData.courier);
+      delete rawData.courier;
     }
 
     Object.assign(this, rawData);
