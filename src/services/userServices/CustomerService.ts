@@ -17,4 +17,18 @@ export class CustomerService {
 
     return this.orderRepository.fetchByCustomer(customerId);
   }
+
+  async getCustomerOrder(customerId: number, orderId: number): Promise<OrderEntity> {
+    const userExists = await this.userRepository.fetchById(customerId);
+
+    if (!userExists) throw new Error("User not found");
+
+    const order = await this.orderRepository.fetchById(orderId);
+
+    if (!order) throw new Error("Order not found");
+
+    if (order.customer?.id !== customerId) throw new Error("Order not found");
+
+    return order;
+  }
 }

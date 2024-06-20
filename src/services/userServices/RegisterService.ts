@@ -28,7 +28,7 @@ export class RegisterService {
       user = new UserEntity({email, password, firstName, lastName, roles: []})
     }
 
-    if (!user.roles.find(r => r === role)) {
+    if (!user.roles.find(r => r === role) && password === user.password) {
       user.roles.push(role)
     }
 
