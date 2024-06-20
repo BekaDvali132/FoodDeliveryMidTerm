@@ -29,4 +29,8 @@ export class ProductRepository implements IProductRepository {
   fetchById(id: number): Promise<ProductEntity | undefined> {
     return this.dataSource.products.getById(id);
   }
+
+  async fetchByFacility(facilityId: number): Promise<ProductEntity[]> {
+    return this.dataSource.products.find((product) => product.owner?.id === facilityId);
+  }
 }

@@ -34,4 +34,12 @@ export class FacilityService {
     return this.facilityRepository.save(facility);
   }
 
+  async fetchFacilityById(id: number): Promise<FacilityEntity | undefined> {
+    return this.facilityRepository.fetchById(id);
+  }
+
+  async fetchFacilityByManager(manager: UserEntity): Promise<FacilityEntity[]> {
+    return this.facilityRepository.fetchByManager(manager.id);
+  }
+
 }

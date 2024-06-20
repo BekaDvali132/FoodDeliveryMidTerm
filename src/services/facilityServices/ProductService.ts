@@ -1,3 +1,4 @@
+import { FacilityEntity } from "../../core/entities/facilityEntities/FacilityEntity";
 import {ProductEntity} from "../../core/entities/facilityEntities/ProductEntity";
 import {Tag} from "../../core/entities/facilityEntities/Tag";
 import {IFacilityRepository, IProductRepository, ITagRepository} from "../../interfaces/facilityInterfaces";
@@ -24,6 +25,14 @@ export class ProductService {
     const product = new ProductEntity({ name, price, owner, tags });
 
     return this.productRepository.save(product);
+  }
+
+  async fetchProductById(id: number): Promise<ProductEntity | undefined> {
+    return this.productRepository.fetchById(id);
+  }
+
+  async fetchFacilityProducts (facility: FacilityEntity): Promise<ProductEntity[]> {
+    return this.productRepository.fetchByFacility(facility);
   }
 
 }

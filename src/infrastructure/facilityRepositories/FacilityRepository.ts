@@ -35,4 +35,8 @@ export class FacilityRepository implements IFacilityRepository {
   fetchAll(): Promise<FacilityEntity[]> {
     return this.dataSource.facilities.find();
   }
+
+  fetchByManager(managerId: number): Promise<FacilityEntity[]> {
+    return this.dataSource.facilities.find((facility) => facility.manager?.id === managerId);
+  }
 }
