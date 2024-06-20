@@ -32,7 +32,7 @@ export class ProductService {
   }
 
   async fetchFacilityProducts (facility: FacilityEntity): Promise<ProductEntity[]> {
-    return this.productRepository.fetchByFacility(facility);
+    return this.productRepository.fetchByFacility(facility.id);
   }
 
 }
