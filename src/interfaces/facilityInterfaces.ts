@@ -20,6 +20,7 @@ export interface IProductRepository {
   save(product: ProductEntity): Promise<ProductEntity>;
   fetchById(id: number): Promise<ProductEntity | undefined>;
   fetchByFacility(facilityId: number): Promise<ProductEntity[]>;
+  fetchAllByName(name: string): Promise<ProductEntity[]>;
 }
 
 export interface ITagRepository {

@@ -27,6 +27,10 @@ export class ProductService {
     return this.productRepository.save(product);
   }
 
+  async fetchProductsByName(name: string): Promise<ProductEntity[]> {
+    return this.productRepository.fetchAllByName(name);
+  }
+
   async fetchProductById(id: number): Promise<ProductEntity | undefined> {
     return this.productRepository.fetchById(id);
   }
