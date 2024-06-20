@@ -35,4 +35,20 @@ export class CourierOrderService {
         return this.orderRepository.save(orderExists);
     }
 
+    async deliverOrder(courier: UserEntity, order: OrderEntity): Promise<OrderEntity> {
+        const orderExists = await this.orderRepository.fetchById(order.id);
+
+        if (!orderExists) {
+            throw new Error("Order not found");
+        }
+
+        if (orderExists.courier?.id !== courier.id) {
+            throw new Error("Order does not belong to this courier");
+        }
+
+        orderExists.status = orderStatusEnum.completed;
+
+        return this.orderRepository.save(orderExists);
+    }
+
 }
