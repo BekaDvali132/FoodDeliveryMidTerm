@@ -31,4 +31,8 @@ export class TagRepository implements ITagRepository {
   async delete(id: number): Promise<void> {
     return this.dataSource.tags.delete(id);
   }
+
+  async fetchAll(): Promise<Tag[]> {
+    return this.dataSource.tags.find();
+  }
 }

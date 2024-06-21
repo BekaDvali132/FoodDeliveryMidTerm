@@ -8,6 +8,10 @@ export class TagService {
     private readonly productRepository: IProductRepository,
   ) {}
 
+  async getTags(): Promise<Tag[]> {
+    return this.tagRepository.fetchAll();
+  }
+
   async addTag(name: string): Promise<Tag> {
     const newTag = new Tag({name});
     return this.tagRepository.save(newTag);

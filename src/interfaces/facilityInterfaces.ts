@@ -31,4 +31,5 @@ export interface ITagRepository {
   fetchById(id: number): Promise<Tag | undefined>;
   update(tag: Tag): Promise<Tag>;
   delete(id: number): Promise<void>;
+  fetchAll(): Promise<Tag[]>;
 }
