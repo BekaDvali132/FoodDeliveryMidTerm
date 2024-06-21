@@ -27,6 +27,28 @@ export class ProductService {
     return this.productRepository.save(product);
   }
 
+  async editProduct(id: number, name: string, price: number, tagIds: number[]): Promise<ProductEntity> {
+    const product = await this.productRepository.fetchById(id);
+
+    if (!product) {
+      throw new Error("Product not found");
+    }
+
+    const tags: Tag[] = await Promise.all(
+      tagIds.map(tagId => this.tagRepository.fetchById(tagId))
+    ) as Tag[];
+
+    if (!tags.every(tag => tag)) {
+      throw new Error("Tag not found");
+    }
+
+    product.name = name;
+    product.price = price;
+    product.tags = tags;
+
+    return this.productRepository.save(product);
+  }
+
   async fetchProductsByName(name: string): Promise<ProductEntity[]> {
     return this.productRepository.fetchAllByName(name);
   }
