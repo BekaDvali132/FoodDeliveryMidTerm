@@ -1,16 +1,15 @@
-import {FacilityRepository} from "../../infrastructure/facilityRepositories/FacilityRepository";
 import {FacilityEntity} from "../../core/entities/facilityEntities/FacilityEntity";
-import {FacilityManagerEntity} from "../../core/entities/userEntities/FacilityManagerEntity";
-import {FacilityManagerRepository} from "../../infrastructure/userRepositories/FacilityManagerRepository";
-import {FacilityTypeRepository} from "../../infrastructure/facilityRepositories/FacilityTypeRepository";
 import {FacilityType} from "../../core/entities/facilityEntities/FacilityType";
+import {IUserRepository} from "../../interfaces/userInterfaces";
+import {IFacilityRepository, IFacilityTypeRepository} from "../../interfaces/facilityInterfaces";
+import {UserEntity} from "../../core/entities/userEntities/UserEntity";
 
 export class FacilityService {
 
   constructor(
-    private readonly facilityManagerRepository: FacilityManagerRepository,
-    private readonly facilityRepository: FacilityRepository,
-    private readonly facilityTypeRepository: FacilityTypeRepository,
+    private readonly userRepository: IUserRepository,
+    private readonly facilityRepository: IFacilityRepository,
+    private readonly facilityTypeRepository: IFacilityTypeRepository,
   ) {}
 
   async getFacilities(): Promise<FacilityEntity[]> {
@@ -18,7 +17,7 @@ export class FacilityService {
   }
 
   async addFacility(name: string, ownerId: number, typeId: number): Promise<FacilityEntity> {
-    const manager = await this.facilityManagerRepository.fetchById(ownerId) as FacilityManagerEntity;
+    const manager = await this.userRepository.fetchById(ownerId) as UserEntity;
 
     if (!manager) {
       throw new Error("Owner not found");
@@ -33,6 +32,14 @@ export class FacilityService {
     const facility = new FacilityEntity({ name, manager, type });
 
     return this.facilityRepository.save(facility);
+  }
+
+  async fetchFacilityById(id: number): Promise<FacilityEntity | undefined> {
+    return this.facilityRepository.fetchById(id);
+  }
+
+  async fetchFacilityByManager(manager: UserEntity): Promise<FacilityEntity[]> {
+    return this.facilityRepository.fetchByManager(manager.id);
   }
 
 }

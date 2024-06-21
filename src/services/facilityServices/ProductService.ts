@@ -1,15 +1,14 @@
-import {ProductRepository} from "../../infrastructure/facilityRepositories/ProductRepository";
+import { FacilityEntity } from "../../core/entities/facilityEntities/FacilityEntity";
 import {ProductEntity} from "../../core/entities/facilityEntities/ProductEntity";
-import {TagRepository} from "../../infrastructure/facilityRepositories/TagRepository";
-import {FacilityRepository} from "../../infrastructure/facilityRepositories/FacilityRepository";
 import {Tag} from "../../core/entities/facilityEntities/Tag";
+import {IFacilityRepository, IProductRepository, ITagRepository} from "../../interfaces/facilityInterfaces";
 
 export class ProductService {
 
   constructor(
-    private readonly productRepository: ProductRepository,
-    private readonly tagRepository: TagRepository,
-    private readonly facilityRepository: FacilityRepository,
+    private readonly productRepository: IProductRepository,
+    private readonly tagRepository: ITagRepository,
+    private readonly facilityRepository: IFacilityRepository,
   ) {}
 
   async addProduct(name: string, price:number, ownerId: number, tagIds: number[]): Promise<ProductEntity> {
@@ -26,6 +25,18 @@ export class ProductService {
     const product = new ProductEntity({ name, price, owner, tags });
 
     return this.productRepository.save(product);
+  }
+
+  async fetchProductsByName(name: string): Promise<ProductEntity[]> {
+    return this.productRepository.fetchAllByName(name);
+  }
+
+  async fetchProductById(id: number): Promise<ProductEntity | undefined> {
+    return this.productRepository.fetchById(id);
+  }
+
+  async fetchFacilityProducts (facility: FacilityEntity): Promise<ProductEntity[]> {
+    return this.productRepository.fetchByFacility(facility.id);
   }
 
 }

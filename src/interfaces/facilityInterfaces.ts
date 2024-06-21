@@ -7,6 +7,7 @@ export interface IFacilityRepository {
   save(facility: FacilityEntity): Promise<FacilityEntity>;
   fetchById(id: number): Promise<FacilityEntity | undefined>;
   fetchAll(): Promise<FacilityEntity[]>;
+  fetchByManager(managerId: number): Promise<FacilityEntity[]>;
 }
 
 export interface IFacilityTypeRepository {
@@ -18,6 +19,8 @@ export interface IFacilityTypeRepository {
 export interface IProductRepository {
   save(product: ProductEntity): Promise<ProductEntity>;
   fetchById(id: number): Promise<ProductEntity | undefined>;
+  fetchByFacility(facilityId: number): Promise<ProductEntity[]>;
+  fetchAllByName(name: string): Promise<ProductEntity[]>;
 }
 
 export interface ITagRepository {

@@ -1,10 +1,10 @@
 import {Tag} from "../../core/entities/facilityEntities/Tag";
-import {TagRepository} from "../../infrastructure/facilityRepositories/TagRepository";
+import {ITagRepository} from "../../interfaces/facilityInterfaces";
 
 export class TagService {
 
   constructor(
-    private readonly tagRepository: TagRepository,
+    private readonly tagRepository: ITagRepository,
   ) {}
 
   async addTag(name: string): Promise<Tag> {

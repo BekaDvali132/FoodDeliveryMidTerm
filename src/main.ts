@@ -1,16 +1,16 @@
 import {FacilityRepository} from "./infrastructure/facilityRepositories/FacilityRepository";
 import {DataSource} from "./infrastructure/Database";
 import {FacilityService} from "./services/facilityServices/FacilityService";
-import {FacilityManagerRepository} from "./infrastructure/userRepositories/FacilityManagerRepository";
 import {FacilityTypeRepository} from "./infrastructure/facilityRepositories/FacilityTypeRepository";
+import {UserRepository} from "./infrastructure/UserRepository";
 
 const dataSource = new DataSource()
 
-const facilityManagersRepo = new FacilityManagerRepository(dataSource)
 const facilitiesRepo = new FacilityRepository(dataSource)
 const facilityTypesRepo = new FacilityTypeRepository(dataSource)
+const userRepo = new UserRepository(dataSource)
 
-const facilities = new FacilityService(facilityManagersRepo, facilitiesRepo, facilityTypesRepo)
+const facilities = new FacilityService(userRepo, facilitiesRepo, facilityTypesRepo)
 
 async function main() {
   console.log(await facilities.getFacilities())
