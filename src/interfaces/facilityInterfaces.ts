@@ -22,10 +22,12 @@ export interface IProductRepository {
   fetchById(id: number): Promise<ProductEntity | undefined>;
   fetchByFacility(facilityId: number): Promise<ProductEntity[]>;
   fetchAllByName(name: string): Promise<ProductEntity[]>;
+  fetchByTag(tagId: number): Promise<ProductEntity[]>;
 }
 
 export interface ITagRepository {
   save(tag: Tag): Promise<Tag>;
   fetchById(id: number): Promise<Tag | undefined>;
   update(tag: Tag): Promise<Tag>;
+  delete(id: number): Promise<void>;
 }

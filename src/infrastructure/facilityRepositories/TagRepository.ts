@@ -27,4 +27,8 @@ export class TagRepository implements ITagRepository {
   async update(tag: Tag): Promise<Tag> {
     return this.dataSource.tags.update(tag);
   }
+
+  async delete(id: number): Promise<void> {
+    return this.dataSource.tags.delete(id);
+  }
 }
