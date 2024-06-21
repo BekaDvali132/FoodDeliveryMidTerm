@@ -15,6 +15,7 @@ export interface IFacilityTypeRepository {
   save(facilityType: FacilityType): Promise<FacilityType>;
   fetchById(id: number): Promise<FacilityType | undefined>;
   update(facilityType: FacilityType): Promise<FacilityType>;
+  delete(id: number): Promise<void>;
 }
 
 export interface IProductRepository {

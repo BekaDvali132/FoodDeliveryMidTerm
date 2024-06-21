@@ -27,4 +27,8 @@ export class FacilityTypeRepository implements IFacilityTypeRepository {
   async update(type: FacilityType): Promise<FacilityType> {
     return this.dataSource.facilityTypes.update(type);
   }
+
+  async delete(id: number): Promise<void> {
+    return this.dataSource.facilityTypes.delete(id);
+  }
 }
