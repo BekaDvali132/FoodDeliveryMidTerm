@@ -8,6 +8,7 @@ export interface IFacilityRepository {
   fetchById(id: number): Promise<FacilityEntity | undefined>;
   fetchAll(): Promise<FacilityEntity[]>;
   fetchByManager(managerId: number): Promise<FacilityEntity[]>;
+  fetchByType(typeId: number): Promise<FacilityEntity[]>;
 }
 
 export interface IFacilityTypeRepository {

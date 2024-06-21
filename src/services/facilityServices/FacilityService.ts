@@ -42,4 +42,8 @@ export class FacilityService {
     return this.facilityRepository.fetchByManager(manager.id);
   }
 
+  async fetchFacilitiesByType(type: FacilityType): Promise<FacilityEntity[]> {
+    return this.facilityRepository.fetchByType(type.id);
+  }
+
 }
