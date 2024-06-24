@@ -1,4 +1,4 @@
-import { UserEntity } from "../core/entities/userEntities/UserEntity";
+import { UserEntity, userRoles } from "../core/entities/userEntities/UserEntity";
 import { IUserRepository } from "../interfaces/userInterfaces";
 import { DataSource } from "./Database";
 
@@ -22,5 +22,13 @@ export class UserRepository implements IUserRepository {
 
   update(user: UserEntity): Promise<UserEntity> {
     return this.dataSource.users.update(user);
+  }
+
+  fetchByRole(role: userRoles): Promise<UserEntity[]> {
+    return this.dataSource.users.find((user) => user.roles.includes(role));
+  }
+
+  delete(id: number): Promise<void> {
+    return this.dataSource.users.delete(id);
   }
 }

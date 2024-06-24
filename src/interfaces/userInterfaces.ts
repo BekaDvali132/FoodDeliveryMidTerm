@@ -6,4 +6,6 @@ export interface IUserRepository {
   fetchById(id: number): Promise<UserEntity | undefined>;
   fetchByEmail(email: string): Promise<UserEntity | undefined>;
   update(user: UserEntity): Promise<UserEntity>;
+  fetchByRole(role: string): Promise<UserEntity[]>;
+  delete(id: number): Promise<void>;
 }
