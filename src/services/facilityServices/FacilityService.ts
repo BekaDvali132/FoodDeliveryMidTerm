@@ -34,6 +34,16 @@ export class FacilityService {
     return this.facilityRepository.save(facility);
   }
 
+  async updateFacility(facility:FacilityEntity): Promise<FacilityEntity> {
+    const facilityExists = await this.facilityRepository.fetchById(facility.id);
+
+    if (!facilityExists) {
+      throw new Error("Facility not found");
+    }
+
+    return this.facilityRepository.save(facility);
+  }
+
   async fetchFacilityById(id: number): Promise<FacilityEntity | undefined> {
     return this.facilityRepository.fetchById(id);
   }
