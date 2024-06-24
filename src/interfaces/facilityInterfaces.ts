@@ -33,3 +33,20 @@ export interface ITagRepository {
   delete(id: number): Promise<void>;
   fetchAll(): Promise<Tag[]>;
 }
+
+
+export interface IAddProduct {
+  name: string, 
+  price: number, 
+  tagIds: number[], 
+  facilityId: number, 
+  managerId: number
+}
+
+export interface IEditProduct {
+  id: number, 
+  name: string, 
+  price: number, 
+  tagIds: number[],
+  managerId: number
+}
